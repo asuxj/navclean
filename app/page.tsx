@@ -16,34 +16,45 @@ export default function Home() {
   const [data, setData] = useState<DataSchema>(DEFAULT_DATA);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  
-  // 新增：专注模式状态，当文件夹打开时为 true
+  const [currentWallpaper, setCurrentWallpaper] = useState("");
   const [isFocusMode, setIsFocusMode] = useState(false);
 
+  // 初始化数据
   useEffect(() => {
     async function initData() {
       try {
+        let loadedData = DEFAULT_DATA;
+        
+        // 1. 尝试从 GitHub 配置加载
         const storedConfig = localStorage.getItem(GITHUB_CONFIG_KEY);
+        let loadedFromGithub = false;
+        
         if (storedConfig) {
           const config: GithubConfig = JSON.parse(storedConfig);
           if (config.token) {
             const ghData = await loadDataFromGithub(config);
             if (ghData) {
-              setData(ghData);
-              setLoading(false);
-              return;
+              loadedData = ghData;
+              loadedFromGithub = true;
             }
           }
         }
-        try {
-          const res = await fetch("/data.json");
-          if (res.ok) {
-            const jsonData = await res.json();
-            setData(jsonData);
+
+        // 2. 如果没配 GitHub，尝试加载本地 data.json
+        if (!loadedFromGithub) {
+          try {
+            const res = await fetch("/data.json");
+            if (res.ok) {
+              loadedData = await res.json();
+            }
+          } catch (e) {
+            console.log("No local data.json found.");
           }
-        } catch (e) {
-          console.log("No local data.json found, using default.");
         }
+
+        setData(loadedData);
+        initWallpaper(loadedData); // 初始化壁纸
+
       } catch (err) {
         console.error("Initialization error", err);
       } finally {
@@ -53,13 +64,34 @@ export default function Home() {
     initData();
   }, []);
 
+  // 壁纸逻辑处理
+  const initWallpaper = async (cfg: DataSchema) => {
+    const { wallpaperType, wallpaper, wallpaperList } = cfg.settings;
+
+    if (wallpaperType === 'local' && wallpaperList && wallpaperList.length > 0) {
+      // 随机抽取一张本地壁纸
+      const randomImg = wallpaperList[Math.floor(Math.random() * wallpaperList.length)];
+      setCurrentWallpaper(randomImg);
+    } else if (wallpaperType === 'bing') {
+      // 使用 Bing 每日壁纸 API (通过 cors-anywhere 或直接引用)
+      // 这里使用一个稳定的 Bing 镜像源，因为直接调 Bing 接口会有跨域问题
+      setCurrentWallpaper("https://bing.img.run/1920x1080.php"); 
+    } else {
+      // 默认 URL 或 API
+      setCurrentWallpaper(wallpaper);
+    }
+  };
+
   const handleSave = async (newData: DataSchema) => {
     setSaving(true);
     try {
       setData(newData);
+      // 保存后重新应用壁纸设置（比如切换了模式）
+      initWallpaper(newData);
+
       const storedConfig = localStorage.getItem(GITHUB_CONFIG_KEY);
       if (!storedConfig) {
-        toast.success("本地状态已更新 (未同步 GitHub)");
+        toast.success("本地已更新 (未同步 GitHub)");
         setSaving(false);
         return;
       }
@@ -88,7 +120,7 @@ export default function Home() {
   };
 
   const bgStyle = {
-    backgroundImage: `url(${data.settings.wallpaper})`,
+    backgroundImage: `url(${currentWallpaper})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -109,11 +141,6 @@ export default function Home() {
     >
       <div className="relative z-10 w-full max-w-5xl flex flex-col items-center mt-10 md:mt-20">
           
-          {/* 性能优化核心：
-             将时钟、天气、搜索栏包裹在一个容器中。
-             当 isFocusMode 为 true (文件夹打开) 时，这些元素会被设为透明并移除点击事件。
-             这减少了浏览器在渲染毛玻璃模态框时的背景绘制工作量。
-          */}
           <div className={`flex flex-col items-center w-full transition-all duration-500 ease-in-out ${
             isFocusMode ? 'opacity-0 blur-md scale-95 pointer-events-none' : 'opacity-100 scale-100'
           }`}>
@@ -126,12 +153,11 @@ export default function Home() {
           <LinkGrid 
             categories={data.categories} 
             onReorder={handleReorder}
-            onOpenChange={setIsFocusMode} // 传递状态控制器
+            onOpenChange={setIsFocusMode}
           />
           
       </div>
 
-      {/* 设置按钮在打开文件夹时也隐藏 */}
       <div className={`transition-opacity duration-300 ${isFocusMode ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         <SettingsDialog 
           data={data} 

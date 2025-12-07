@@ -14,8 +14,9 @@ export interface Category {
 
 export interface SiteSettings {
   title: string;
-  wallpaper: string;
-  wallpaperType: 'url' | 'bing' | 'daily';
+  wallpaper: string; // 当 type 为 'url' 或 'api' 时使用的地址
+  wallpaperType: 'url' | 'local' | 'bing'; // 增加 'local' 类型
+  wallpaperList: string[]; // 新增：本地壁纸列表
   blurLevel: 'low' | 'medium' | 'high';
 }
 
@@ -27,8 +28,9 @@ export interface DataSchema {
 export const DEFAULT_DATA: DataSchema = {
   settings: {
     title: "Clean Nav",
-    wallpaper: "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&q=80&w=3870&ixlib=rb-4.0.3",
+    wallpaper: "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&q=80&w=1920",
     wallpaperType: 'url',
+    wallpaperList: [], // 默认为空
     blurLevel: 'medium'
   },
   categories: [
@@ -38,15 +40,6 @@ export const DEFAULT_DATA: DataSchema = {
       links: [
         { id: "l1", title: "Google", url: "https://google.com", icon: "Search" },
         { id: "l2", title: "GitHub", url: "https://github.com", icon: "Github" },
-        { id: "l3", title: "ChatGPT", url: "https://chatgpt.com", icon: "Bot" },
-      ]
-    },
-    {
-      id: "c2",
-      title: "开发",
-      links: [
-        { id: "l4", title: "Vercel", url: "https://vercel.com", icon: "Triangle" },
-        { id: "l5", title: "React", url: "https://react.dev", icon: "Atom" },
       ]
     }
   ]
