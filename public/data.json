@@ -2,7 +2,7 @@
   "settings": {
     "title": "Clean Nav",
     "wallpaper": "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&q=80&w=3870&ixlib=rb-4.0.3",
-    "wallpaperType": "url",
+    "wallpaperType": "local",
     "blurLevel": "medium",
     "wallpaperList": [
       "/wallpapers/background1.webp",
