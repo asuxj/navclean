@@ -269,7 +269,7 @@ export function SettingsDialog({ data, onSave, isSaving, onRefreshWallpaper }: S
                                  key={iconName}
                                  variant="ghost"
                                  size="icon"
-                                 className="h-10 w-10 hover:bg-muted" // 恢复 h-10，方便点击
+                                 className="h-10 w-10 hover:bg-muted" // 恢复 h-10
                                  onClick={() => setNewIcon(iconName)}
                                  title={iconName}
                                >
@@ -421,7 +421,6 @@ export function SettingsDialog({ data, onSave, isSaving, onRefreshWallpaper }: S
             </div>
           </TabsContent>
 
-          {/* ... General and Github Tabs same as before (restoring h-9) ... */}
           <TabsContent value="general" className="space-y-6 py-4 overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40">
             <div className="space-y-2">
               <Label>网站标题</Label>

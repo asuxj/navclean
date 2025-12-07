@@ -70,14 +70,13 @@ function SortableCard({ category, onClick }: { category: Category; onClick: () =
     >
       <motion.div layoutId={id} className="flex flex-col items-center justify-center text-center gap-1">
         
-        {/* 关键修改：h-10 w-10 -> h-8 w-8，并去除 mb-1 确保紧凑 */}
-        <div className="transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-0.5">
+        <div className="mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-0.5">
           <IconRender name={category.icon || "FolderOpen"} className="h-8 w-8 text-yellow-200/90 drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]" />
         </div>
         
-        <div className="text-center px-4 w-full">
-          {/* 关键修改：text-lg -> text-base，缩小字号 */}
-          <h3 className="text-white font-medium tracking-wide drop-shadow-sm truncate text-base [text-shadow:0_0_8px_rgba(0,0,0,0.8),0_0_4px_rgba(0,0,0,0.6)]">
+        {/* 关键修改：移除 px-4 填充，使用 tracking-tight 换取宽度 */}
+        <div className="text-center w-full"> 
+          <h3 className="text-white font-medium tracking-tight drop-shadow-sm truncate text-xs [text-shadow:0_0_8px_rgba(0,0,0,0.8),0_0_4px_rgba(0,0,0,0.6)]">
             {category.title}
           </h3>
         </div>
@@ -123,10 +122,9 @@ export function LinkGrid({ categories, onReorder, onOpenChange }: LinkGridProps)
   return (
     <>
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <div className="w-full max-w-5xl mx-auto pb-6 px-6 relative z-30">
+        <div className="w-full max-w-5xl mx-auto pb-6 px-4 relative z-30">
           <SortableContext items={categories.map(c => c.id)} strategy={rectSortingStrategy}>
-            {/* 间距已调整为 gap-3 */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-9 gap-2">
               {categories.map((category) => (
                 <SortableCard key={category.id} category={category} onClick={() => setSelectedId(category.id)} />
               ))}
@@ -152,7 +150,6 @@ export function LinkGrid({ categories, onReorder, onOpenChange }: LinkGridProps)
               className="w-full max-w-5xl max-h-[85vh] bg-zinc-900/90 backdrop-blur-md border border-white/10 rounded-[1.5rem] shadow-2xl overflow-hidden flex flex-col relative z-10 will-change-transform"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* 标题栏：已压缩高度 */}
               <div className="flex items-center justify-between px-4 py-2 border-b border-white/5 shrink-0 bg-transparent">
                 <div className="flex items-center gap-3">
                   <div className="p-1.5 rounded-xl bg-yellow-500/20 text-yellow-200">
@@ -170,7 +167,6 @@ export function LinkGrid({ categories, onReorder, onOpenChange }: LinkGridProps)
                 </button>
               </div>
 
-              {/* 内容区 */}
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2, delay: 0.1 }} className="p-6 overflow-y-auto custom-scrollbar flex-1 bg-transparent">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {selectedCategory.links.map((link) => (
