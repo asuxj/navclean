@@ -24,7 +24,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { DataSchema, Category, Link } from "@/lib/types";
+import { DataSchema, Category, LinkItem } from "@/lib/types";
 import { GithubConfig, GITHUB_CONFIG_KEY } from "@/lib/github";
 import { useLocalStorage } from "@/lib/hooks";
 import {
@@ -206,7 +206,7 @@ export function SettingsDialog({ data, onSave, isSaving, onRefreshWallpaper }: S
 
             const parseDl = (dl: HTMLDListElement, parentTitle?: string) => {
                 const categories: Category[] = [];
-                let currentLinks: Link[] = [];
+                let currentLinks: LinkItem[] = [];
                 let currentCategoryTitle = parentTitle || "导入的书签";
                 
                 for (const child of Array.from(dl.children)) {
@@ -243,7 +243,7 @@ export function SettingsDialog({ data, onSave, isSaving, onRefreshWallpaper }: S
             };
 
             const bodyDl = doc.querySelector('body > dl');
-            if (bodyDl) {
+            if (bodyDl instanceof HTMLDListElement) {
                 newCategories.push(...parseDl(bodyDl));
             }
 
