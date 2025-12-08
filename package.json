@@ -21,11 +21,10 @@
     "url": "https://github.com/YingXiaoMo/clean-nav.git"
   },
   "license": "MIT",
-  "scripts": {
-    "scan": "node scripts/scan-wallpapers.mjs",
-    "dev": "npm run scan && next dev",
-    "build": "npm run scan && next build",
-    "start": "npm run scan && next start",
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
