@@ -1,20 +1,20 @@
 <div align="center">
   <img src="./public/icon/logo.png" width="120" height="120" alt="Clean Home Logo">
-  <h1>Clean Home</h1>
+  <h1>Clean Nav</h1>
   <p>
     <b>A minimal, fast, and beautiful personal homepage / start page.</b>
   </p>
   <p>极简风格个人主页 | 导航页 | 仪表盘</p>
 
   <p>
-    <a href="https://github.com/yingxiaomo/clean-home/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/yingxiaomo/clean-home?style=flat-square" alt="license" />
+    <a href="https://github.com/yingxiaomo/nav/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/yingxiaomo/nav?style=flat-square" alt="license" />
     </a>
-    <a href="https://github.com/yingxiaomo/clean-home/stargazers">
-      <img src="https://img.shields.io/github/stars/yingxiaomo/clean-home?style=flat-square" alt="stars" />
+    <a href="https://github.com/yingxiaomo/nav/stargazers">
+      <img src="https://img.shields.io/github/stars/yingxiaomo/nav?style=flat-square" alt="stars" />
     </a>
-    <a href="https://github.com/yingxiaomo/clean-home/network/members">
-      <img src="https://img.shields.io/github/forks/yingxiaomo/clean-home?style=flat-square" alt="forks" />
+    <a href="https://github.com/yingxiaomo/nav/network/members">
+      <img src="https://img.shields.io/github/forks/yingxiaomo/nav?style=flat-square" alt="forks" />
     </a>
   </p>
 
