@@ -2,7 +2,7 @@ import { DataSchema } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ImageIcon, Shuffle } from "lucide-react";
+import { ImageIcon, Shuffle, Info } from "lucide-react"; 
 
 interface GeneralTabProps {
   localData: DataSchema;
@@ -58,22 +58,48 @@ export function GeneralTab({ localData, setLocalData, onRefreshWallpaper }: Gene
         )}
 
         {localData.settings.wallpaperType === 'local' && (
-          <div className="space-y-3 animate-in fade-in pt-1">
+          <div className="space-y-4 animate-in fade-in pt-1">
+            <div className="space-y-2">
+               <div className="flex items-center justify-between">
+                 <Label className="text-xs text-muted-foreground">随机打包数量 (构建生效)</Label>
+                 <span className="text-xs font-mono bg-background px-2 py-0.5 rounded border">
+                    当前: {localData.settings.maxPackedWallpapers || 10} 张
+                 </span>
+               </div>
+               <div className="flex gap-2 items-center">
+                 <Input 
+                    type="number"
+                    min={1}
+                    max={50}
+                    value={localData.settings.maxPackedWallpapers || 10}
+                    onChange={e => {
+                      const val = parseInt(e.target.value);
+                      if (!isNaN(val) && val > 0) {
+                        setLocalData({...localData, settings: {...localData.settings, maxPackedWallpapers: val}})
+                      }
+                    }}
+                    className="h-8 text-sm"
+                 />
+               </div>
+               <p className="flex items-start gap-1.5 text-[10px] text-orange-500/80 leading-tight">
+                  <Info className="h-3 w-3 shrink-0 mt-0.5" />
+                  <span>此数值决定了 Base64 打包的图片数量。修改并保存后，需要等待 Vercel 重新构建才会生效。数值过大会导致首次加载变慢。</span>
+               </p>
+            </div>
+
             <div className="flex items-center justify-between p-3 rounded-lg border border-border/50 bg-background/50">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-md bg-muted text-muted-foreground"><ImageIcon className="h-4 w-4" /></div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-medium">自动扫描</span>
-                  <span className="text-xs text-muted-foreground">共加载 {localData.settings.wallpaperList?.length || 0} 张壁纸</span>
+                  <span className="text-sm font-medium">当前缓存</span>
+                  <span className="text-xs text-muted-foreground">内存中已有 {localData.settings.wallpaperList?.length || 0} 张壁纸</span>
                 </div>
               </div>
               <Button size="sm" variant="secondary" onClick={onRefreshWallpaper} title="随机切换一张本地壁纸" className="h-9">
-                <Shuffle className="h-4 w-4 mr-2" /> 随机切换
+                <Shuffle className="h-4 w-4 mr-2" /> 换一张
               </Button>
             </div>
-            <p className="text-[10px] text-muted-foreground px-1">
-              * 将图片放入 <code className="bg-muted px-1 py-0.5 rounded">public/wallpapers</code> 目录并重启服务即可自动加载。
-            </p>
+            
           </div>
         )}
       </div>

@@ -19,6 +19,7 @@ export interface SiteSettings {
   wallpaperType: 'custom' | 'local' | 'bing' | 'url';
   wallpaperList: string[];
   blurLevel: 'low' | 'medium' | 'high';
+  maxPackedWallpapers?: number;
 }
 
 export interface DataSchema {
@@ -32,7 +33,8 @@ export const DEFAULT_DATA: DataSchema = {
     wallpaper: "", 
     wallpaperType: 'local',
     wallpaperList: [],
-    blurLevel: 'medium'
+    blurLevel: 'medium',
+    maxPackedWallpapers: 10
   },
   categories: [
     {

@@ -116,7 +116,7 @@ npm run dev
 - **随机采样**：如果 `public/wallpapers` 目录下的图片超过 **10张**，每次构建（`npm run build` 或 `npm run dev`）时只会自动**随机选取 10 张**打包进应用。
 - **推荐格式**：建议使用 `.webp` 格式，单张图片建议控制在 **2MB 以内**。
 
-如果你希望包含更多图片，请修改 `app\page.tsx` 中的 `MAX_WALLPAPERS` 常量。
+如果你希望打包更多图片，可以在设置中修改。
 
 
 ## 📄 License:
