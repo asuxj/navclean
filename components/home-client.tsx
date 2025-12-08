@@ -13,30 +13,51 @@ import { Loader2, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function HomeClient({ initialWallpapers }: { initialWallpapers: string[] }) {
-  const [currentWallpaper, setCurrentWallpaper] = useState("");
+  const [currentWallpaper, setCurrentWallpaper] = useState(() => {
+    if (DEFAULT_DATA.settings.wallpaperType === 'local' && initialWallpapers.length > 0) {
+      return initialWallpapers[0];
+    }
+    return "";
+  });
 
   const [data, setData] = useState<DataSchema>(DEFAULT_DATA);
   const [saving, setSaving] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [imgLoaded, setImgLoaded] = useState(false);
-
-  useEffect(() => {
-    if (DEFAULT_DATA.settings.wallpaperType === 'local' && initialWallpapers.length > 0) {
-      const randomImg = initialWallpapers[Math.floor(Math.random() * initialWallpapers.length)];
-      setCurrentWallpaper(randomImg);
-    }
-  }, [initialWallpapers]);
+  const [imgLoaded, setImgLoaded] = useState(true);
 
   useEffect(() => {
     if (!currentWallpaper) return;
+    if (initialWallpapers.includes(currentWallpaper)) {
+        setImgLoaded(true);
+        return;
+    }
+    
+    setImgLoaded(false); 
     const img = new Image();
     img.src = currentWallpaper;
     img.onload = () => setImgLoaded(true);
-  }, [currentWallpaper]);
+  }, [currentWallpaper, initialWallpapers]);
 
   useEffect(() => {
-    console.log("%c Clean Nav ", "background: #3b82f6; color: #fff; padding: 4px; border-radius: 4px;");
+    console.log(
+      "%c by %c YingXiaoMo ",
+      "background: #6B7280; color: #fff; padding: 4px 8px; border-radius: 4px 0 0 4px; font-weight: bold;",
+      "background: #3b82f6; color: #fff; padding: 4px 8px; border-radius: 0 4px 4px 0; font-weight: bold;"
+    );
+    console.log(
+      `%c
+      __  __  _               __  __       
+      \\ \\/ / (_)  __ _   ___ |  \\/  |  ___ 
+       \\  /  | | / _\` | / _ \\| |\\/| | / _ \\
+       /  \\  | || (_| || (_) | |  | || (_) |
+      /_/\\_\\ |_| \\__,_| \\___/|_|  |_| \\___/
+      `,
+      "color: #3b82f6; font-weight: bold;"
+    );
+    console.log("%c✨ 欢迎来到我的导航页 | 项目已开源", "color: #3b82f6;");
+    console.log("%cGithub: https://github.com/yingxiaomo/nav", "color: #aaa; font-size: 12px; font-family: monospace;");
+    console.log("%c主页: https://ovoxo.cc", "color: #aaa; font-size: 12px; font-family: monospace;");
 
     async function initData() {
       try {

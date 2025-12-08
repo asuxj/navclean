@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import HomeClient from '@/components/home-client';
 
-
+// 最大壁纸数量
 const MAX_WALLPAPERS = 10; 
 
 export default function Page() {

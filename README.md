@@ -113,11 +113,10 @@ npm run dev
 ### ⚠️ 注意事项与构建策略
 为了保证页面加载性能（Seconds-to-Interactive），构建脚本包含以下策略：
 
-- **随机采样**：如果 `public/wallpapers` 目录下的图片超过 **10张**，每次构建（`npm run build` 或 `npm run dev`）时会自动**随机选取 10 张**打包进应用。
+- **随机采样**：如果 `public/wallpapers` 目录下的图片超过 **10张**，每次构建（`npm run build` 或 `npm run dev`）时只会自动**随机选取 10 张**打包进应用。
 - **推荐格式**：建议使用 `.webp` 格式，单张图片建议控制在 **2MB 以内**。
-- **全量保留**：虽然构建只引用 10 张，但 `public` 目录下的所有文件依然会被部署，你可以通过 URL 直接访问未被选中的图片。
 
-如果你希望包含更多图片，请修改 `scripts/scan-wallpapers.mjs` 中的 `MAX_WALLPAPERS` 常量。
+如果你希望包含更多图片，请修改 `app\page.tsx` 中的 `MAX_WALLPAPERS` 常量。
 
 
 ## 🛠️ 技术栈
