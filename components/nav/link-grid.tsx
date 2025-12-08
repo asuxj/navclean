@@ -32,10 +32,9 @@ interface LinkGridProps {
 
 const IconRender = ({ name, className }: { name: string; className?: string }) => {
   if (name?.startsWith("http") || name?.startsWith("/")) {
-    /* eslint-disable-next-line @next/next/no-img-element */
     return <img src={name} alt="icon" className={`${className} object-contain rounded-sm`} style={{ width: '100%', height: '100%' }} />;
   }
-  // @ts-ignore
+
   const Icon = (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.FolderOpen;
   return <Icon className={className} />;
 };
@@ -74,7 +73,6 @@ function SortableCard({ category, onClick }: { category: Category; onClick: () =
           <IconRender name={category.icon || "FolderOpen"} className="h-8 w-8 text-yellow-200/90 drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]" />
         </div>
         
-        {/* 关键修改：移除 px-4 填充，使用 tracking-tight 换取宽度 */}
         <div className="text-center w-full"> 
           <h3 className="text-white font-medium tracking-tight drop-shadow-sm truncate text-xs [text-shadow:0_0_8px_rgba(0,0,0,0.8),0_0_4px_rgba(0,0,0,0.6)]">
             {category.title}
@@ -147,28 +145,29 @@ export function LinkGrid({ categories, onReorder, onOpenChange }: LinkGridProps)
 
             <motion.div
               layoutId={selectedId}
-              className="w-full max-w-5xl max-h-[85vh] bg-zinc-900/90 backdrop-blur-md border border-white/10 rounded-[1.5rem] shadow-2xl overflow-hidden flex flex-col relative z-10 will-change-transform"
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              className="dark w-full max-w-5xl max-h-[85vh] bg-white/10 dark:bg-black/20 text-foreground backdrop-blur-xl border border-white/20 rounded-[1.5rem] shadow-lg overflow-hidden flex flex-col relative z-10 will-change-transform"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between px-4 py-2 border-b border-white/5 shrink-0 bg-transparent">
+              <div className="flex items-center justify-between px-4 py-2 border-b border-border/20 shrink-0 bg-transparent">
                 <div className="flex items-center gap-3">
                   <div className="p-1.5 rounded-xl bg-yellow-500/20 text-yellow-200">
                      <IconRender name={selectedCategory.icon || "FolderOpen"} className="h-5 w-5" />
                   </div>
-                  <h2 className="text-lg font-semibold text-white tracking-tight">
+                  <h2 className="text-lg font-semibold text-foreground tracking-tight">
                     {selectedCategory.title}
                   </h2>
                 </div>
                 <button
                   onClick={() => setSelectedId(null)}
-                  className="p-1.5 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-colors"
+                  className="p-1.5 rounded-full bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2, delay: 0.1 }} className="p-6 overflow-y-auto custom-scrollbar flex-1 bg-transparent">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                   {selectedCategory.links.map((link) => (
                     <a
                       key={link.id}
@@ -177,19 +176,16 @@ export function LinkGrid({ categories, onReorder, onOpenChange }: LinkGridProps)
                       rel="noopener noreferrer"
                       className="group block relative"
                     >
-                      <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-colors">
-                        <div className={`h-10 w-10 shrink-0 rounded-lg flex items-center justify-center border border-white/5 overflow-hidden ${
-                          link.icon?.startsWith('http') ? 'bg-white/10 p-1.5' : 'bg-blue-500/20 text-blue-200'
+                      <div className="flex items-center gap-4 p-4 rounded-xl hover:bg-muted border border-transparent hover:border-border/40 transition-colors">
+                        <div className={`h-10 w-10 shrink-0 rounded-lg flex items-center justify-center border border-border/40 overflow-hidden ${
+                          link.icon?.startsWith('http') ? 'bg-background/50 p-1.5' : 'bg-blue-500/20 text-blue-200'
                         }`}>
                            <IconRender name={link.icon || "Link"} className={link.icon?.startsWith('http') ? "w-full h-full" : "h-5 w-5"} />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h4 className="text-white font-medium text-sm truncate">
+                          <h4 className="text-foreground font-medium text-sm truncate">
                             {link.title}
                           </h4>
-                          <p className="text-white/30 text-[10px] truncate mt-0.5 font-mono">
-                            {new URL(link.url).hostname}
-                          </p>
                         </div>
                       </div>
                     </a>

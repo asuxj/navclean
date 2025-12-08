@@ -16,20 +16,29 @@ export default function Home() {
   const [data, setData] = useState<DataSchema>(DEFAULT_DATA);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [currentWallpaper, setCurrentWallpaper] = useState("");
-  const [isFocusMode, setIsFocusMode] = useState(false);
-  
+  const [currentWallpaper, setCurrentWallpaper] = useState(""); 
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    // 控制台彩蛋
     console.log(
-      "%c Clean Nav %c https://github.com/YingXiaoMo/clean-nav",
-      "background: #333; color: #fff; padding: 4px 8px; border-radius: 4px 0 0 4px; font-weight: bold;",
-      "background: #3b82f6; color: #fff; padding: 4px 8px; border-radius: 0 4px 4px 0;"
+      "%c by %c YingXiaoMo ",
+      "background: #6B7280; color: #fff; padding: 4px 8px; border-radius: 4px 0 0 4px; font-weight: bold;",
+      "background: #3b82f6; color: #fff; padding: 4px 8px; border-radius: 0 4px 4px 0; font-weight: bold;"
     );
-    console.log("%c Designed & Developed by YingXiaoMo", "color: #aaa; font-size: 12px; margin-top: 5px; font-family: monospace;");
+    console.log(
+      `%c
+      __  __  _               __  __       
+      \\ \\/ / (_)  __ _   ___ |  \\/  |  ___ 
+       \\  /  | | / _\` | / _ \\| |\\/| | / _ \\
+       /  \\  | || (_| || (_) | |  | || (_) |
+      /_/\\_\\ |_| \\__,_| \\___/|_|  |_| \\___/
+      `,
+      "color: #3b82f6; font-weight: bold;"
+    );
+    console.log("%c✨ 欢迎来到我的导航页 | 项目已开源", "color: #3b82f6;");
+    console.log("%cGithub: https://github.com/YingXiaoMo/Clean-Nav", "color: #aaa; font-size: 12px; font-family: monospace;");
+    console.log("%c主页: https://ovoxo.cc", "color: #aaa; font-size: 12px; font-family: monospace;");
 
     async function initData() {
       try {
@@ -155,30 +164,23 @@ export default function Home() {
 
   return (
     <main 
-      // 启用 flex-col 布局，用于垂直对齐
       className="relative min-h-screen w-full overflow-hidden flex flex-col items-center p-6 md:p-12"
       style={bgStyle}
     >
       
-      {/* 1. 顶部内容 (Clock + SearchBar) */}
       <div className="relative z-10 w-full max-w-5xl flex flex-col items-center shrink-0 mt-10 md:mt-20">
-          <div className={`flex flex-col items-center w-full transition-opacity duration-300 ease-out will-change-opacity ${
-            isFocusMode ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}>
+          <div className="flex flex-col items-center w-full">
             <ClockWidget />
             <SearchBar onLocalSearch={setSearchQuery} />
           </div>
       </div>
       
-      {/* 2. Spacer: 推动 LinkGrid 到底部 */}
       <div className="flex-grow" /> 
 
-      {/* 3. LinkGrid: Aligned to the bottom (above footer) */}
-      <div className="relative z-10 w-full max-w-5xl flex flex-col items-center mb-10"> {/* mb-10 确保距离页脚有足够空间 */}
+      <div className="relative z-10 w-full max-w-5xl flex flex-col items-center mb-10"> 
           <LinkGrid 
             categories={displayCategories} 
             onReorder={searchQuery ? undefined : handleReorder}
-            onOpenChange={setIsFocusMode}
           />
       </div>
 
@@ -195,7 +197,7 @@ export default function Home() {
         </Button>
       </div>
 
-      <div className={`transition-opacity duration-300 ${isFocusMode ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+      <div>
         <SettingsDialog 
           data={data} 
           onSave={handleSave} 
@@ -204,7 +206,7 @@ export default function Home() {
         />
       </div>
 
-      <footer className={`absolute bottom-2 left-0 w-full text-center z-0 transition-opacity duration-500 ${isFocusMode ? 'opacity-0' : 'opacity-100'}`}>
+      <footer className="absolute bottom-2 left-0 w-full text-center z-0">
         <p className="text-[10px] text-white/30 font-light tracking-widest font-mono select-none">
           © 2025 Clean Nav · Designed by{' '}
           <a 
