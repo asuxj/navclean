@@ -60,6 +60,14 @@ export default function HomeClient({ initialWallpapers }: HomeClientProps) {
   }, [currentWallpaper, initialWallpapers]);
 
   useEffect(() => {
+    console.log(`%c
+    __  __ _                              
+    \\ \\/ /(_) __ _  ___  _ __ ___   ___ 
+     \\  / | |/ _\` |/ _ \\| '_ \` _ \\ / _ \\
+     /  \\ | | (_| | (_) | | | | | | (_) |
+    /_/\\_\\|_|\\__,_|\\___/|_| |_| |_|\\___/ 
+                                         
+    `, "color: #3b82f6; font-weight: bold;");
     console.log("%c Clean Nav ", "background: #3b82f6; color: #fff; border-radius: 4px; font-weight: bold;");
     console.log("%c✨ 欢迎来到我的导航页 | 项目已开源", "color: #3b82f6;");
     console.log("%cGithub: https://github.com/yingxiaomo/nav", "color: #aaa; font-size: 12px; font-family: monospace;");

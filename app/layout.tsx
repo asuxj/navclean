@@ -24,13 +24,13 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Clean Nav - 极简 GitHub 风格导航页 | 开发者起始页",
+    default: "Clean Nav - 极简风格导航页 | 开发者起始页",
     template: "%s | Clean Nav",
   },
   description: "Clean Nav 是一个基于 Next.js + Tailwind CSS 构建的极简、免费开源浏览器主页。支持 GitHub 账号直接登录同步数据，无需服务器数据库。具备拖拽排序、自定义壁纸、书签导入等功能。",
   
   keywords: [
-    "Clean Nav", "导航页", "起始页", "浏览器主页", "极简导航", "好看的导航", 
+    "Nav", "导航页", "起始页", "浏览器主页", "极简导航", "好看的导航", 
     "开源项目", "Next.js", "React", "Tailwind CSS", "GitHub API", 
     "Serverless", "静态网站", "Vercel", "书签管理", "Dashboard", "Startpage"
   ],
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Clean Nav - 极简 GitHub 风格导航页",
+    title: "Clean Nav - 极简风格导航页",
     description: "免费、开源、无服务器。利用 GitHub API 同步数据的极简浏览器主页。",
     url: "https://ovoxo.cc",
     siteName: "Clean Nav",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Clean Nav - 极简 GitHub 风格导航页",
+    title: "Clean Nav - 极简风格导航页",
     description: "支持拖拽排序与 GitHub 数据同步的极简起始页。",
     images: ["https://nav.ovoxo.cc/og-image.png"],
   },
