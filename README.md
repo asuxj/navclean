@@ -107,7 +107,7 @@ npm run dev
 由于本项目采用了纯静态导出，在配置项目时请务必检查以下设置：
 | 平台 | 构建命令 (Build Command)|输出目录 (Output Directory)|
 |--------------|-----------------------------|---------------------------|
-| Vercel        | npm run build  | out (如果未自动识别)          |
+| Vercel        | npm run build  | 留空 (默认) ⚠️ 不要填 out          |
 | Cloudflare       | npm run build          | out (必须手动填写)          |
 | Netlify       | npm run build     | out            |
 
