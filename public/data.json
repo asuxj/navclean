@@ -96,7 +96,50 @@
       "id": "c-1765789080414",
       "title": "Github",
       "icon": "FolderOpen",
-      "links": []
+      "links": [
+        {
+          "id": "l-1765789193670",
+          "title": "V2rayN",
+          "url": "https://github.com/2dust/v2rayN/releases",
+          "icon": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+        },
+        {
+          "id": "l-1765789216910",
+          "title": "Anzhiyu",
+          "url": "https://github.com/anzhiyu-c/hexo-theme-anzhiyu",
+          "icon": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+        },
+        {
+          "id": "l-1765789238638",
+          "title": "XrayCore",
+          "url": "https://github.com/XTLS/Xray-core/releases",
+          "icon": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+        },
+        {
+          "id": "l-1765789267046",
+          "title": "sing-box",
+          "url": "https://github.com/SagerNet/sing-box/releases",
+          "icon": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+        },
+        {
+          "id": "l-1765789293550",
+          "title": "Termora",
+          "url": "https://github.com/TermoraDev/termora/releases",
+          "icon": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+        },
+        {
+          "id": "l-1765789318454",
+          "title": "MFA",
+          "url": "https://github.com/MetaCubeX/ClashMetaForAndroid/releases",
+          "icon": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+        },
+        {
+          "id": "l-1765789380294",
+          "title": "FIClash",
+          "url": "https://github.com/chen08209/FlClash/releases",
+          "icon": "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+        }
+      ]
     }
   ],
   "todos": [],
