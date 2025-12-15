@@ -41,6 +41,12 @@
           "title": "YouTube",
           "url": "https://youtube.com",
           "icon": "Youtube"
+        },
+        {
+          "id": "l-1765789901935",
+          "title": "Idx",
+          "url": "https://idx.google.com/",
+          "icon": "https://www.google.com/s2/favicons?domain=idx.google.com&sz=128"
         }
       ]
     },
