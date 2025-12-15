@@ -25,12 +25,6 @@
       "title": "常用工具",
       "links": [
         {
-          "id": "l1",
-          "title": "Google",
-          "url": "https://google.com",
-          "icon": "Search"
-        },
-        {
           "id": "l2",
           "title": "GitHub",
           "url": "https://github.com",
