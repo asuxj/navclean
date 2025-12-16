@@ -48,7 +48,8 @@
           "url": "https://idx.google.com/",
           "icon": "https://www.google.com/s2/favicons?domain=idx.google.com&sz=128"
         }
-      ]
+      ],
+      "icon": "Monitor"
     },
     {
       "id": "c2",
@@ -78,7 +79,8 @@
           "url": "https://ui.shadcn.com",
           "icon": "Component"
         }
-      ]
+      ],
+      "icon": "Database"
     },
     {
       "id": "c3",
@@ -96,12 +98,13 @@
           "url": "https://unsplash.com",
           "icon": "Image"
         }
-      ]
+      ],
+      "icon": "Sparkles"
     },
     {
       "id": "c-1765789080414",
       "title": "Github",
-      "icon": "FolderOpen",
+      "icon": "Network",
       "links": [
         {
           "id": "l-1765789193670",
