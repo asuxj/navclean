@@ -159,8 +159,15 @@
     {
       "id": "c-1766463410879",
       "title": "Ai",
-      "icon": "FolderOpen",
-      "links": []
+      "icon": "Bot",
+      "links": [
+        {
+          "id": "l-1766463442551",
+          "title": "OpenaiTeachers",
+          "url": "https://openai.com/zh-Hans-CN/index/chatgpt-for-teachers/",
+          "icon": "https://www.google.com/s2/favicons?domain=openai.com&sz=128"
+        }
+      ]
     }
   ],
   "todos": [],
