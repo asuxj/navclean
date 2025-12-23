@@ -21,85 +21,23 @@
   },
   "categories": [
     {
-      "id": "c1",
-      "title": "常用工具",
+      "id": "c-1766463410879",
+      "title": "Ai",
+      "icon": "Bot",
       "links": [
         {
-          "id": "l2",
-          "title": "GitHub",
-          "url": "https://github.com",
-          "icon": "Github"
+          "id": "l-1766463442551",
+          "title": "OpenaiTeachers",
+          "url": "https://openai.com/zh-Hans-CN/index/chatgpt-for-teachers/",
+          "icon": "https://www.google.com/s2/favicons?domain=openai.com&sz=128"
         },
         {
-          "id": "l3",
-          "title": "ChatGPT",
-          "url": "https://chatgpt.com",
-          "icon": "Bot"
-        },
-        {
-          "id": "l4",
-          "title": "YouTube",
-          "url": "https://youtube.com",
-          "icon": "Youtube"
-        },
-        {
-          "id": "l-1765790210255",
-          "title": "Idx",
-          "url": "https://idx.google.com/",
-          "icon": "https://www.google.com/s2/favicons?domain=idx.google.com&sz=128"
+          "id": "l-1766463990815",
+          "title": "ChatgptArm",
+          "url": "https://chatgpt.com/veterans-claim",
+          "icon": "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128"
         }
-      ],
-      "icon": "Monitor"
-    },
-    {
-      "id": "c2",
-      "title": "开发资源",
-      "links": [
-        {
-          "id": "l5",
-          "title": "Vercel",
-          "url": "https://vercel.com",
-          "icon": "Triangle"
-        },
-        {
-          "id": "l6",
-          "title": "React",
-          "url": "https://react.dev",
-          "icon": "Atom"
-        },
-        {
-          "id": "l7",
-          "title": "Tailwind",
-          "url": "https://tailwindcss.com",
-          "icon": "Wind"
-        },
-        {
-          "id": "l8",
-          "title": "ShadcnUI",
-          "url": "https://ui.shadcn.com",
-          "icon": "Component"
-        }
-      ],
-      "icon": "Database"
-    },
-    {
-      "id": "c3",
-      "title": "设计灵感",
-      "links": [
-        {
-          "id": "l9",
-          "title": "Dribbble",
-          "url": "https://dribbble.com",
-          "icon": "Dribbble"
-        },
-        {
-          "id": "l10",
-          "title": "Unsplash",
-          "url": "https://unsplash.com",
-          "icon": "Image"
-        }
-      ],
-      "icon": "Sparkles"
+      ]
     },
     {
       "id": "c-1765789080414",
@@ -157,17 +95,85 @@
       ]
     },
     {
-      "id": "c-1766463410879",
-      "title": "Ai",
-      "icon": "Bot",
+      "id": "c1",
+      "title": "常用工具",
       "links": [
         {
-          "id": "l-1766463442551",
-          "title": "OpenaiTeachers",
-          "url": "https://openai.com/zh-Hans-CN/index/chatgpt-for-teachers/",
-          "icon": "https://www.google.com/s2/favicons?domain=openai.com&sz=128"
+          "id": "l2",
+          "title": "GitHub",
+          "url": "https://github.com",
+          "icon": "Github"
+        },
+        {
+          "id": "l3",
+          "title": "ChatGPT",
+          "url": "https://chatgpt.com",
+          "icon": "Bot"
+        },
+        {
+          "id": "l4",
+          "title": "YouTube",
+          "url": "https://youtube.com",
+          "icon": "Youtube"
+        },
+        {
+          "id": "l-1765790210255",
+          "title": "Idx",
+          "url": "https://idx.google.com/",
+          "icon": "https://www.google.com/s2/favicons?domain=idx.google.com&sz=128"
         }
-      ]
+      ],
+      "icon": "Monitor"
+    },
+    {
+      "id": "c3",
+      "title": "设计灵感",
+      "links": [
+        {
+          "id": "l9",
+          "title": "Dribbble",
+          "url": "https://dribbble.com",
+          "icon": "Dribbble"
+        },
+        {
+          "id": "l10",
+          "title": "Unsplash",
+          "url": "https://unsplash.com",
+          "icon": "Image"
+        }
+      ],
+      "icon": "Sparkles"
+    },
+    {
+      "id": "c2",
+      "title": "开发资源",
+      "links": [
+        {
+          "id": "l5",
+          "title": "Vercel",
+          "url": "https://vercel.com",
+          "icon": "Triangle"
+        },
+        {
+          "id": "l6",
+          "title": "React",
+          "url": "https://react.dev",
+          "icon": "Atom"
+        },
+        {
+          "id": "l7",
+          "title": "Tailwind",
+          "url": "https://tailwindcss.com",
+          "icon": "Wind"
+        },
+        {
+          "id": "l8",
+          "title": "ShadcnUI",
+          "url": "https://ui.shadcn.com",
+          "icon": "Component"
+        }
+      ],
+      "icon": "Database"
     }
   ],
   "todos": [],
